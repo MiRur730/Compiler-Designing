@@ -1,0 +1,40 @@
+%{
+#include <stdio.h>
+%}
+DIGIT [0-9]
+
+%%
+//ending 00
+
+.*00 {printf}
+
+
+[0-9]*222[0-9]*  {printf("Zero hai");}
+
+
+.      {printf("no:");}
+
+
+
+
+
+
+
+
+
+
+%%
+int yywrap(){
+    return 1;
+}
+
+int main(){
+
+      yyin=fopen("test.txt", "r");
+
+      
+    yyin=stdin;
+    yyout=stdout;
+    yylex();
+    return 0;
+}

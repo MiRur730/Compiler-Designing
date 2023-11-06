@@ -1,0 +1,52 @@
+hey i m done
+flex mitali.l
+
+bison -d -o y.tab.c your_parser.y
+
+
+
+gcc lex.yy.c y.tab.c -o hello.exe
+
+
+
+
+flex mitali.l
+gcc -o mitali.exe lex.yy.c
+./mitali.exe
+
+
+
+
+
+
+%{
+#include <stdio.h>
+void yyerror(char *s);
+%}
+
+%token ZERO ONE
+
+%%
+
+stmp: L {printf("Conversion done);}
+;
+
+L:  L B {$$=$1*2+$2;}
+ | B    {$$=$1;}
+;
+
+B: ZERO {$$=0;} 
+  | ONE {$$=1;} 
+;
+
+%%
+
+int main(){
+
+    printf("Enter the number");
+    yyparse();
+  }
+
+void yyerror(char *s){
+    printf("ERROR");
+} 
